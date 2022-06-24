@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IUseCase } from 'src/domain/use-cases/i.use.case';
+import { IUseCase } from 'src/domain/use-cases/i-use-case';
 
 @Injectable()
 export class DeleteCatUseCase implements IUseCase {

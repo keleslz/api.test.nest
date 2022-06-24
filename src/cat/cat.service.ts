@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { ICrudService } from 'src/domain/services/i.crud.service';
-import { CreateCatUseCase } from './use-cases/create.cat.use.case';
-import { DeleteCatUseCase } from './use-cases/delete.cat.use.case';
-import { GetOneCatUseCase } from './use-cases/get.one.cat.use.case';
-import { UpdateCatUseCase } from './use-cases/update.cat.use.case';
+import { ICreateDto } from 'src/domain/dto/i-create-dto';
+import { IUpdateDto } from 'src/domain/dto/i-update-dto';
+import { ICrudService } from 'src/domain/services/i-crud-service';
+import { CreateCatUseCase } from './use-cases/create-cat-use-case';
+import { DeleteCatUseCase } from './use-cases/delete.cat-use-case';
+import { GetOneCatUseCase } from './use-cases/get.one.cat-use-case';
+import { UpdateCatUseCase } from './use-cases/update.cat-use-case';
 
 @Injectable()
 export class CatService implements ICrudService {
@@ -13,9 +15,12 @@ export class CatService implements ICrudService {
     private readonly deleteCatUseCase: DeleteCatUseCase,
     private readonly getOneCatUseCase: GetOneCatUseCase,
   ) {}
+  public create(createDto: ICreateDto): void {
+    this.createCatUseCase.execute(createDto);
+  }
 
-  public create() {
-    this.createCatUseCase.execute();
+  public update(id: string, updateDto: IUpdateDto): void {
+    this.updateCatUseCase.execute(id, updateDto);
   }
 
   public findAll() {
@@ -24,10 +29,6 @@ export class CatService implements ICrudService {
 
   public findOne() {
     this.getOneCatUseCase.execute();
-  }
-
-  public update() {
-    this.updateCatUseCase.execute();
   }
 
   public remove() {

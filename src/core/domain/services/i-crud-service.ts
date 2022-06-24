@@ -5,6 +5,6 @@ export interface ICrudService {
   create(createDto: ICreateDto): void;
   update(id: string, updateDto: IUpdateDto): void;
   findAll(): void;
-  findOne(): void;
-  remove(): void;
+  findOne(id: string): void;
+  remove(id: string): void;
 }

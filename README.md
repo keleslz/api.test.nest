@@ -1,6 +1,6 @@
-Archi of API
+# Archi of API
 
-
+```
 src
 |__ ressource/
     |____ dto
@@ -29,7 +29,7 @@ core/
 |____data/
         |__ repositories/
         |__ entities/
-
+```
 
 
 controller > service > use-case > Repository > Entity

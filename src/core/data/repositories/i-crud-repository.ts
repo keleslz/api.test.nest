@@ -1,6 +1,5 @@
-
-export interface ICRUDRepository<E> {
-  create(entity: E): boolean;
-  update(entity: E): boolean;
-  remove(entity: E): boolean;
+export interface  ICRUDRepository<Entity> {
+  create(entity: Entity): boolean;
+  update(entity: Entity): boolean;
+  remove(entity: Entity): boolean;
 }

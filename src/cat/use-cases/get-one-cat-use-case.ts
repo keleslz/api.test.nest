@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cat } from '../../entities/cat.entity';
+import { Cat } from 'src/core/data/models/entities/cat';
 
 @Injectable()
 export class GetOneCatUseCase {

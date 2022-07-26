@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { UpdateCatDto } from '../dto/update-cat.dto';
-import { ICRUDRepository } from 'src/core/data/repositories/i-crud-repository';
-import { Cat } from 'src/core/data/models/entities/cat';
 import { CatRepository } from 'src/data/CatRepository';
 
 @Injectable()

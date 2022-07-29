@@ -3,7 +3,9 @@ import {
   Get,
   Post,
   Body,
-} from '@nestjs/common';
+} from '@nestjs/common' ;
+
+import { JsonResponse } from 'src/core/domain/services/json-response';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { MessageService } from './message.service';
 
@@ -13,11 +15,11 @@ export class MessageController {
 
   @Post()
   create(@Body() messageDto: CreateMessageDto) : string {
-    return this.messageService.create(messageDto).toString();
+    return JsonResponse.from(this.messageService.create(messageDto));
   }
 
   @Get()
   findAll() : string {
-    return 'Convertir les blocs de controller en Response, voir si la doc prevoit quelque chose';// this.messageService.findAll();
+    return JsonResponse.from(this.messageService.findAll());
   }
 }

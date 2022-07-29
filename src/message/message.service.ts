@@ -7,17 +7,19 @@ import { CreateMessageUseCase } from './use-cases/create-message-use-case';
 import { GetAllMessageUseCase } from './use-cases/get-all-message-use-case';
 
 @Injectable()
-export class MessageService implements Pick<ICrudService, "create"|"findAll"> {
+export class MessageService
+  implements Pick<ICrudService<Message>, 'create' | 'findAll'>
+{
   constructor(
     private readonly createMessageUseCase: CreateMessageUseCase,
     private readonly getAllMessageUseCase: GetAllMessageUseCase,
   ) {}
-  
-  public create(createDto: CreateMessageDto): boolean {
+
+  public create(createDto: CreateMessageDto) {
     return this.createMessageUseCase.execute(createDto);
   }
 
-  public findAll() : Message[] {
+  public findAll(): Message[] {
     return this.getAllMessageUseCase.execute();
   }
 }

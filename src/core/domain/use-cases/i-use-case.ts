@@ -1,3 +1,3 @@
-export interface IUseCase{
-  execute(...args: any): void;
+export interface IUseCase<Entity> {
+  execute(...args: any): Entity;
 }

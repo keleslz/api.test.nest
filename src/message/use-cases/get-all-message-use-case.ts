@@ -5,6 +5,6 @@ import { Message } from 'src/core/data/models/entities/message';
 export class GetAllMessageUseCase {
   execute(): Message[] {
     // REpository
-    return [];
+    return [new Message('id', 'content', new Date())];
   }
 }

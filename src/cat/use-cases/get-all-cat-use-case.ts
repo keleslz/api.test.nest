@@ -3,7 +3,7 @@ import { Cat } from 'src/core/data/models/entities/cat';
 
 @Injectable()
 export class GetAllCatUseCase {
-  execute(): Cat[] {
+  execute() {
     // REpository
     return [];
   }

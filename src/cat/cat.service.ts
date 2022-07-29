@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Cat } from 'src/core/data/models/entities/cat';
 import { ICreateDto } from 'src/core/domain/dto/i-create-dto';
 import { IUpdateDto } from 'src/core/domain/dto/i-update-dto';
 import { ICrudService } from 'src/core/domain/services/i-crud-service';
@@ -9,7 +10,7 @@ import { GetOneCatUseCase } from './use-cases/get-one-cat-use-case';
 import { UpdateCatUseCase } from './use-cases/update-cat-use-case';
 
 @Injectable()
-export class CatService implements ICrudService {
+export class CatService implements ICrudService<Cat> {
   constructor(
     private readonly createCatUseCase: CreateCatUseCase,
     private readonly updateCatUseCase: UpdateCatUseCase,
@@ -17,23 +18,23 @@ export class CatService implements ICrudService {
     private readonly getOneCatUseCase: GetOneCatUseCase,
     private readonly getAllCatUseCase: GetAllCatUseCase,
   ) {}
-  public create(createDto: ICreateDto): void {
-    this.createCatUseCase.execute(createDto);
+  public create(createDto: ICreateDto) {
+    return this.createCatUseCase.execute(createDto);
   }
 
-  public update(id: string, updateDto: IUpdateDto): void {
-    this.updateCatUseCase.execute(id, updateDto);
+  public update(id: string, updateDto: IUpdateDto) {
+    return this.updateCatUseCase.execute(id, updateDto);
   }
 
   public findAll() {
-    this.getAllCatUseCase.execute();
+    return this.getAllCatUseCase.execute();
   }
 
   public findOne(id: string) {
-    this.getOneCatUseCase.execute(id);
+    return this.getOneCatUseCase.execute(id);
   }
 
   public remove(id: string) {
-    this.deleteCatUseCase.execute(id);
+    return this.deleteCatUseCase.execute(id);
   }
 }

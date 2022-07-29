@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { Cat } from 'src/core/data/models/entities/cat';
 import { IUseCase } from 'src/core/domain/use-cases/i-use-case';
 
 @Injectable()
-export class DeleteCatUseCase implements IUseCase {
+export class DeleteCatUseCase implements IUseCase<Cat> {
   execute(id: string) {
-    return `This action removes a #${'id'} cat`;
+    return new Cat();
   }
 }
